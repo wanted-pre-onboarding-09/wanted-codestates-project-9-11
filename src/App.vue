@@ -3,12 +3,14 @@
     <HeaderPage />
     <section class="wrap">
       <SearchBar :company="company" :setCompany="setCompany" />
+      <PentagonChart />
       <ResultWrap />
     </section>
   </main>
 </template>
 
 <script>
+import PentagonChart from './components/chart/PentagonChart.vue';
 import SearchBar from './components/SearchBar.vue';
 
 import HeaderPage from './components/HeaderPage.vue';
@@ -19,6 +21,7 @@ import mock from './mock/index';
 export default {
   name: 'App',
   components: {
+    PentagonChart,
     ResultWrap,
     SearchBar,
 
