@@ -28,13 +28,12 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style>
 .tab_group {
+  margin: 10px 0 20px 0px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  width: 360px;
+  /* width: 360px; */
   border: 1px solid #f2f2f2;
   border-radius: 4px;
   background: #f2f2f2;
@@ -48,9 +47,10 @@ button {
   border: 0;
   background: #f2f2f2;
   flex-grow: 1;
-  > img {
-    width: 14px;
-  }
+}
+
+img {
+  width: 14px;
 }
 
 button.active {
@@ -67,6 +67,5 @@ button.active {
   font-size: 12px;
   line-height: 17px;
   color: #121212;
-  text-align: center;
 }
 </style>

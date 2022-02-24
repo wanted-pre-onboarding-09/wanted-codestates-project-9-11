@@ -1,7 +1,7 @@
 ---
-name: What is Feature
-about: 기능 추가 템플릿
-title: 22.02.00 What is Feature
+name: Issue Content Templete
+about: Issue Content
+title: 22.02.00 Issue Content
 labels: feature
 assignees: ''
 
