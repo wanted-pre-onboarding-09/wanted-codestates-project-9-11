@@ -18,6 +18,7 @@ export default {};
   padding: 20px;
   display: flex;
   justify-content: center;
+  z-index: 5;
 }
 
 .modal {
