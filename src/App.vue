@@ -3,7 +3,7 @@
     <HeaderPage />
     <section class="wrap">
       <SearchBar :company="company" :setCompany="setCompany" />
-      <PentagonChart />
+      <PentagonChart :chartValue="chartData" />
       <TabSection />
       <ResultWrap :selectUser="user" :selectCompany="score" />
     </section>
@@ -11,15 +11,15 @@
 </template>
 
 <script>
-import PentagonChart from "./components/chart/PentagonChart.vue";
-import SearchBar from "./components/SearchBar.vue";
-import TabSection from "./components/TabSection.vue"
-import HeaderPage from "./components/HeaderPage.vue";
-import ResultWrap from "./components/ResultWrap.vue";
-import { user } from "./mock/index";
+import PentagonChart from './components/chart/PentagonChart.vue';
+import SearchBar from './components/SearchBar.vue';
+import TabSection from './components/TabSection.vue';
+import HeaderPage from './components/HeaderPage.vue';
+import ResultWrap from './components/ResultWrap.vue';
+import { user } from './mock/index';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     PentagonChart,
     ResultWrap,
@@ -30,13 +30,17 @@ export default {
   data() {
     return {
       user,
-      company: "",
+      company: '',
       score: {
         aggressive: 10,
         confident: 9,
         responsible: 9,
         indivisual: 5,
         horizontal: 3,
+      },
+      chartData: {
+        user,
+        company: null,
       },
     };
   },
