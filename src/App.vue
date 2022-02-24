@@ -8,8 +8,12 @@
         :companies="companies"
       />
       <PentagonChart :chartValue="chartData" />
-      <TabSection />
-      <ResultWrap :selectUser="user" :selectCompany="score" />
+      <TabSection @tabIndex="setTabIndex" />
+      <ResultWrap
+        :setTabIndex="tabIndex"
+        :selectUser="user"
+        :selectCompany="score"
+      />
     </section>
   </main>
 </template>
@@ -36,6 +40,7 @@ export default {
     return {
       user,
       company: '',
+      tabIndex: 0,
       score: {
         aggressive: 10,
         confident: 9,
@@ -61,6 +66,10 @@ export default {
         this.inputVal = filtering[0];
         console.log(this.inputVal);
       }
+    },
+    setTabIndex(tabIndex) {
+      this.tabIndex = tabIndex; // tabIndex 0 = '모두', 1 = '본인', 2 = '회사'
+      console.log(tabIndex);
     },
   },
 };
