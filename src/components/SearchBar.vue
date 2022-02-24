@@ -7,10 +7,13 @@
         <i class="fas fa-solid fa-angle-right"></i>
       </div>
       <div class="resultContainer">
-        <span class="searchCompany"
-          >{{ company }}
-          <span v-on:click="deleteBtn" v-if="company" class="deleteBtn"></span>
-        </span>
+        <div class="searchCompany">{{ inputVal.name }}</div>
+
+        <span
+          v-on:click="deleteBtn"
+          v-if="deletBtnOpen == true"
+          class="deleteBtn"
+        ></span>
       </div>
     </div>
     <div class="inputContainer">
@@ -28,37 +31,43 @@
 import SearchModal from './SearchBarModal.vue';
 export default {
   components: {
-    SearchModal
+    SearchModal,
   },
   props: {
-    company: String,
-    setCompany: Function
+    inputVal: Object,
+    setInputVal: Function,
+    companies: Object,
   },
   data() {
     return {
-      dummy: '그레이비랩',
-      modalOpen: false
+      modalOpen: false,
+      deletBtnOpen: false,
     };
   },
 
   methods: {
     submit(event) {
-      if (event.target.value === this.dummy) {
-        this.setCompany(event.target.value);
-      } else {
+      if (
+        this.companies.filter((item) => item.name === event.target.value)
+          .length === 0
+      ) {
         this.modalOpen = true;
+      } else {
+        this.setInputVal(event.target.value);
+        this.deletBtnOpen = true;
       }
 
       event.target.value = '';
     },
 
     deleteBtn() {
-      this.setCompany('');
+      this.setInputVal('');
+      this.deletBtnOpen = false;
     },
     modalClose() {
       this.modalOpen = false;
-    }
-  }
+    },
+  },
 };
 </script>
 

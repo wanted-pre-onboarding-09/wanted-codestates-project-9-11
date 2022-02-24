@@ -8,7 +8,7 @@ const user = {
 
 const company = [
   {
-    name: "삼성",
+    name: '삼성',
     score: {
       aggressive: 10,
       confident: 9,
@@ -18,7 +18,7 @@ const company = [
     },
   },
   {
-    name: "카카오",
+    name: '카카오',
     score: {
       aggressive: 6,
       confident: 7,
@@ -28,7 +28,7 @@ const company = [
     },
   },
   {
-    name: "LG",
+    name: 'LG',
     score: {
       aggressive: 7,
       confident: 7,

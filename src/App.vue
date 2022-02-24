@@ -2,7 +2,11 @@
   <main>
     <HeaderPage />
     <section class="wrap">
-      <SearchBar :company="company" :setCompany="setCompany" />
+      <SearchBar
+        :inputVal="inputVal"
+        :setInputVal="setInputVal"
+        :companies="companies"
+      />
       <PentagonChart />
       <TabSection @tabIndex="setTabIndex"/>
       <ResultWrap :setTabIndex="tabIndex" :selectUser="user" :selectCompany="score" />
@@ -11,15 +15,16 @@
 </template>
 
 <script>
-import PentagonChart from "./components/chart/PentagonChart.vue";
-import SearchBar from "./components/SearchBar.vue";
-import TabSection from "./components/TabSection.vue"
-import HeaderPage from "./components/HeaderPage.vue";
-import ResultWrap from "./components/ResultWrap.vue";
-import { user } from "./mock/index";
+import PentagonChart from './components/chart/PentagonChart.vue';
+import SearchBar from './components/SearchBar.vue';
+import TabSection from './components/TabSection.vue';
+import HeaderPage from './components/HeaderPage.vue';
+import ResultWrap from './components/ResultWrap.vue';
+import { user } from './mock/index';
+import { company } from './mock/index.js';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     PentagonChart,
     ResultWrap,
@@ -28,6 +33,7 @@ export default {
     HeaderPage,
   },
   data() {
+    console.log(this.inputVal);
     return {
       user,
       tabIndex: 0,
@@ -39,12 +45,20 @@ export default {
         indivisual: 5,
         horizontal: 3,
       },
+      inputVal: {},
+      companies: company,
     };
   },
   methods: {
-    setCompany(value) {
-      this.company = value;
-      console.log(value);
+    setInputVal(value) {
+      if (value === '') {
+        this.inputVal = value;
+        console.log(this.inputVal);
+      } else {
+        let filtering = this.companies.filter((item) => item.name === value);
+        this.inputVal = filtering[0];
+        console.log(this.inputVal);
+      }
     },
     setTabIndex(tabIndex) {
       this.tabIndex = tabIndex; // tabIndex 0 = '모두', 1 = '본인', 2 = '회사'
