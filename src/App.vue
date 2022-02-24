@@ -4,6 +4,7 @@
     <section class="wrap">
       <SearchBar :company="company" :setCompany="setCompany" />
       <PentagonChart />
+      <TabSection />
       <ResultWrap :selectUser="user" :selectCompany="score" />
     </section>
   </main>
@@ -12,10 +13,9 @@
 <script>
 import PentagonChart from "./components/chart/PentagonChart.vue";
 import SearchBar from "./components/SearchBar.vue";
-
+import TabSection from "./components/TabSection.vue"
 import HeaderPage from "./components/HeaderPage.vue";
 import ResultWrap from "./components/ResultWrap.vue";
-
 import { user } from "./mock/index";
 
 export default {
@@ -24,7 +24,7 @@ export default {
     PentagonChart,
     ResultWrap,
     SearchBar,
-
+    TabSection,
     HeaderPage,
   },
   data() {
