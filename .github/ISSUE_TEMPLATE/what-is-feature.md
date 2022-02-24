@@ -1,7 +1,7 @@
 ---
 name: What is Feature
 about: 기능 추가 템플릿
-title: ''
+title: 22.02.00 What is Feature
 labels: feature
 assignees: ''
 
