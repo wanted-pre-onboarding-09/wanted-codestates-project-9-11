@@ -6,7 +6,6 @@
       <PentagonChart />
       <TabSection />
       <ResultWrap :selectUser="user" :selectCompany="score" />
-      
     </section>
   </main>
 </template>
@@ -17,7 +16,6 @@ import SearchBar from "./components/SearchBar.vue";
 import TabSection from "./components/TabSection.vue"
 import HeaderPage from "./components/HeaderPage.vue";
 import ResultWrap from "./components/ResultWrap.vue";
-
 import { user } from "./mock/index";
 
 export default {
