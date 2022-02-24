@@ -27,13 +27,11 @@ export default {
   flex-direction: row;
   align-items: center;
   vertical-align: middle;
+  width: 360px;
   padding: 16px 19px;
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  top: 0px;
   line-height: 34px;
   white-space: nowrap;
+  background-color: #fff;
   border-bottom: solid 1px #f8f8f8;
 }
 

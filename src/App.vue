@@ -1,25 +1,52 @@
 <template>
-  <HeaderPage />
+  <main>
+    <HeaderPage />
+    <section class="wrap">
+      <ResultWrap />
+    </section>
+  </main>
 </template>
 
 <script>
 import HeaderPage from './components/HeaderPage.vue';
+import ResultWrap from './components/ResultWrap.vue';
+import mock from './mock/index';
 
 export default {
   name: 'App',
   components: {
-    HeaderPage
+    HeaderPage,
+    ResultWrap
+  },
+  data() {
+    return {
+      mock
+    };
   }
 };
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+main {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background-color: #e5e5e5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.wrap {
+  width: 360px;
+  height: 100vh;
+  padding: 15px;
+  background-color: #fff;
 }
 </style>
