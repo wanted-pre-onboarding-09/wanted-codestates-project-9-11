@@ -3,11 +3,14 @@
     <SearchModal v-if="modalOpen == true" v-on:click="modalClose" />
     <div class="topBar">
       <div class="searchResult">
-        검색 결과 <i class="fas fa-solid fa-angle-right"></i>
+        검색 결과
+        <i class="fas fa-solid fa-angle-right"></i>
       </div>
       <div class="resultContainer">
-        <div class="searchCompany">{{ company }}</div>
-        <div v-on:click="deleteBtn" class="deleteBtn"></div>
+        <span class="searchCompany"
+          >{{ company }}
+          <span v-on:click="deleteBtn" v-if="company" class="deleteBtn"></span>
+        </span>
       </div>
     </div>
     <div class="inputContainer">
@@ -25,16 +28,16 @@
 import SearchModal from './SearchBarModal.vue';
 export default {
   components: {
-    SearchModal,
+    SearchModal
   },
   props: {
     company: String,
-    setCompany: Function,
+    setCompany: Function
   },
   data() {
     return {
       dummy: '그레이비랩',
-      modalOpen: false,
+      modalOpen: false
     };
   },
 
@@ -54,8 +57,8 @@ export default {
     },
     modalClose() {
       this.modalOpen = false;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -69,19 +72,25 @@ export default {
 .topBar {
   display: flex;
   justify-content: space-between;
-  margin: 10px;
-  padding: 0;
+  margin: 20px 16px;
+  line-height: 22px;
 }
 .searchResult {
   font-weight: bold;
   margin-right: 30px;
-  font-size: 20px;
+  font-size: 16px;
   color: #727272;
 }
+.searchResult i {
+  border: none;
+}
+
 .searchCompany {
-  width: 100px;
   text-align: right;
   color: #727272;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
 }
 .resultContainer {
   display: flex;
@@ -100,8 +109,9 @@ export default {
 }
 
 .inputBox {
-  width: 300px;
-  height: 30px;
+  width: 328px;
+  height: 48px;
+  padding: 14px 16px;
   margin-bottom: 20px;
   border: 1px solid #f2f2f2;
   background-color: #f8f8f8;
