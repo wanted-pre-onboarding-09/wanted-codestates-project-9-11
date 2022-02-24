@@ -1,26 +1,25 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <PentagonChart />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PentagonChart from './components/chart/PentagonChart.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    PentagonChart,
+  },
+};
 </script>
 
 <style>
-#app {
+/* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
+} */
 </style>
