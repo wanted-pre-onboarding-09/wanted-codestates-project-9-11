@@ -1,15 +1,20 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <div class="tab_wrapper">
+      MY RESULT<br>
+      <h2>나의 결과는 ?</h2>
+    </div>
+    <TabSection />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TabSection from "./components/TabSection.vue";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    TabSection
   }
 }
 </script>
