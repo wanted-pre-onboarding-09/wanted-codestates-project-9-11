@@ -4,7 +4,7 @@
       :key="idx" 
       v-for="(tab, idx) in tabs"
       v-bind:class="{active: currentTab === idx}"
-      v-on:click="currentTab = idx"
+      v-on:click="changeIndex(idx)"
     >
       <img :src="tab.img">
       <span class="tab-title">{{tab.text}}</span>
@@ -15,6 +15,12 @@
 <script>
   export default {
     name: 'TabSection',
+    methods: {
+      changeIndex(id) {
+        this.currentTab = id;
+        this.$emit("tabIndex", this.currentTab)
+      }
+    },
     data() {
       return {
         currentTab: 0,
@@ -32,7 +38,6 @@
             img: require("../assets/corp.png")
           }
         ]
-        
       }
     }
   }
@@ -43,7 +48,6 @@
   margin: 10px 0 40px 0px;
   display: flex;
   flex-direction: row;
-  /* width: 360px; */
   border: 1px solid #f2f2f2;
   border-radius: 4px;
   background: #f2f2f2;

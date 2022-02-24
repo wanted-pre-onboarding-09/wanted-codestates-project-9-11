@@ -4,8 +4,8 @@
     <section class="wrap">
       <SearchBar :company="company" :setCompany="setCompany" />
       <PentagonChart />
-      <TabSection />
-      <ResultWrap :selectUser="user" :selectCompany="score" />
+      <TabSection @tabIndex="setTabIndex"/>
+      <ResultWrap :setTabIndex="tabIndex" :selectUser="user" :selectCompany="score" />
     </section>
   </main>
 </template>
@@ -30,6 +30,7 @@ export default {
   data() {
     return {
       user,
+      tabIndex: 0,
       company: "",
       score: {
         aggressive: 10,
@@ -45,6 +46,10 @@ export default {
       this.company = value;
       console.log(value);
     },
+    setTabIndex(tabIndex) {
+      this.tabIndex = tabIndex; // tabIndex 0 = '모두', 1 = '본인', 2 = '회사'
+      console.log(tabIndex)
+    }
   },
 };
 </script>
