@@ -1,5 +1,6 @@
 <template>
   <main>
+    <HeaderPage />
     <section class="wrap">
       <ResultWrap />
     </section>
@@ -7,19 +8,21 @@
 </template>
 
 <script>
-import ResultWrap from "./components/ResultWrap.vue";
-import mock from "./mock/index";
+import HeaderPage from './components/HeaderPage.vue';
+import ResultWrap from './components/ResultWrap.vue';
+import mock from './mock/index';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    ResultWrap,
+    HeaderPage,
+    ResultWrap
   },
   data() {
     return {
-      mock,
+      mock
     };
-  },
+  }
 };
 </script>
 
@@ -36,6 +39,7 @@ main {
   min-height: 100vh;
   background-color: #e5e5e5;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
