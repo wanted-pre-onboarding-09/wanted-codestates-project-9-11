@@ -3,30 +3,41 @@
     <HeaderPage />
     <section class="wrap">
       <SearchBar :company="company" :setCompany="setCompany" />
-      <ResultWrap />
+      <PentagonChart />
+      <ResultWrap :selectUser="user" :selectCompany="score" />
     </section>
   </main>
 </template>
 
 <script>
+import PentagonChart from "./components/chart/PentagonChart.vue";
+import SearchBar from "./components/SearchBar.vue";
 
-import SearchBar from './components/SearchBar.vue';
+import HeaderPage from "./components/HeaderPage.vue";
+import ResultWrap from "./components/ResultWrap.vue";
 
-import HeaderPage from './components/HeaderPage.vue';
-import ResultWrap from './components/ResultWrap.vue';
-
-import mock from './mock/index';
+import { user } from "./mock/index";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
+    PentagonChart,
     ResultWrap,
     SearchBar,
+
+    HeaderPage,
   },
   data() {
     return {
-      mock,
-      company: '',
+      user,
+      company: "",
+      score: {
+        aggressive: 10,
+        confident: 9,
+        responsible: 9,
+        indivisual: 5,
+        horizontal: 3,
+      },
     };
   },
   methods: {
@@ -35,7 +46,6 @@ export default {
       console.log(value);
     },
   },
-
 };
 </script>
 
