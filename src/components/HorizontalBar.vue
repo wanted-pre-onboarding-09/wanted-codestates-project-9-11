@@ -1,5 +1,10 @@
 <template>
-  <BarChart ref="barRef" :chartData="testData" :options="options" />
+  <BarChart
+    ref="barRef"
+    :chartData="testData"
+    :options="options"
+    css-classes="chart-container"
+  />
 </template>
 
 <script>
@@ -7,7 +12,14 @@ import { defineComponent } from "vue";
 import { BarChart } from "vue-chart-3";
 import { Chart, registerables } from "chart.js";
 import { ref } from "vue";
+import {
+  BarController,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+} from "chart.js";
 
+Chart.register(BarController, CategoryScale, LinearScale, BarElement);
 Chart.register(...registerables);
 
 export default defineComponent({
@@ -19,6 +31,9 @@ export default defineComponent({
       responsive: true,
       maintainerAspectRatio: false,
       indexAxis: "y",
+      // interaction: {
+      //   mode: ,
+      // },
       plugins: {
         legend: {
           display: false,
@@ -31,7 +46,6 @@ export default defineComponent({
         {
           label: "one",
           data: [-2, -4, -6, 4, -5],
-
           barThickness: 6,
           backgroundColor: "#6E3CF9",
         },
