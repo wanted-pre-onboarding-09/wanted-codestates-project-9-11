@@ -2,7 +2,11 @@
   <main>
     <HeaderPage />
     <section class="wrap">
-      <SearchBar :company="company" :setCompany="setCompany" />
+      <SearchBar
+        :inputVal="inputVal"
+        :setInputVal="setInputVal"
+        :companies="companies"
+      />
       <PentagonChart :chartValue="chartData" />
       <TabSection />
       <ResultWrap :selectUser="user" :selectCompany="score" />
@@ -16,7 +20,7 @@ import SearchBar from './components/SearchBar.vue';
 import TabSection from './components/TabSection.vue';
 import HeaderPage from './components/HeaderPage.vue';
 import ResultWrap from './components/ResultWrap.vue';
-import { user } from './mock/index';
+import { user, company } from './mock/index';
 
 export default {
   name: 'App',
@@ -28,6 +32,7 @@ export default {
     HeaderPage,
   },
   data() {
+    console.log(this.inputVal);
     return {
       user,
       company: '',
@@ -42,12 +47,20 @@ export default {
         user,
         company: null,
       },
+      inputVal: {},
+      companies: company,
     };
   },
   methods: {
-    setCompany(value) {
-      this.company = value;
-      console.log(value);
+    setInputVal(value) {
+      if (value === '') {
+        this.inputVal = value;
+        console.log(this.inputVal);
+      } else {
+        let filtering = this.companies.filter((item) => item.name === value);
+        this.inputVal = filtering[0];
+        console.log(this.inputVal);
+      }
     },
   },
 };
