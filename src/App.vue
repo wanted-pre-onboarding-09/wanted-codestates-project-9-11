@@ -1,25 +1,68 @@
 <template>
-  <PentagonChart />
+  <main>
+    <HeaderPage />
+    <section class="wrap">
+      <SearchBar :company="company" :setCompany="setCompany" />
+      <PentagonChart />
+      <ResultWrap />
+    </section>
+  </main>
 </template>
 
 <script>
 import PentagonChart from './components/chart/PentagonChart.vue';
+import SearchBar from './components/SearchBar.vue';
+
+import HeaderPage from './components/HeaderPage.vue';
+import ResultWrap from './components/ResultWrap.vue';
+
+import mock from './mock/index';
 
 export default {
   name: 'App',
   components: {
     PentagonChart,
+    ResultWrap,
+    SearchBar,
+
+    HeaderPage,
+  },
+  data() {
+    return {
+      mock,
+      company: '',
+    };
+  },
+  methods: {
+    setCompany(value) {
+      this.company = value;
+      console.log(value);
+    },
   },
 };
 </script>
 
 <style>
-/* #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-} */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+main {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background-color: #e5e5e5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.wrap {
+  width: 360px;
+  height: 100vh;
+  padding: 15px;
+  background-color: #fff;
+}
 </style>

@@ -1,5 +1,4 @@
 <template>
-  <h2>Pentagon</h2>
   <div class="radar-wrapper">
     <!-- <img src="../../assets/cat.png" alt="cat" class="thumb" /> -->
     <RadarChart
