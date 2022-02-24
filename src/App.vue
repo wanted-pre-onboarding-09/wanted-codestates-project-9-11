@@ -7,9 +7,13 @@
         :setInputVal="setInputVal"
         :companies="companies"
       />
-      <PentagonChart />
-      <TabSection @tabIndex="setTabIndex"/>
-      <ResultWrap :setTabIndex="tabIndex" :selectUser="user" :selectCompany="score" />
+      <PentagonChart :chartValue="chartData" />
+      <TabSection @tabIndex="setTabIndex" />
+      <ResultWrap
+        :setTabIndex="tabIndex"
+        :selectUser="user"
+        :selectCompany="score"
+      />
     </section>
   </main>
 </template>
@@ -20,8 +24,7 @@ import SearchBar from './components/SearchBar.vue';
 import TabSection from './components/TabSection.vue';
 import HeaderPage from './components/HeaderPage.vue';
 import ResultWrap from './components/ResultWrap.vue';
-import { user } from './mock/index';
-import { company } from './mock/index.js';
+import { user, company } from './mock/index';
 
 export default {
   name: 'App',
@@ -36,14 +39,18 @@ export default {
     console.log(this.inputVal);
     return {
       user,
+      company: '',
       tabIndex: 0,
-      company: "",
       score: {
         aggressive: 10,
         confident: 9,
         responsible: 9,
         indivisual: 5,
         horizontal: 3,
+      },
+      chartData: {
+        user,
+        company: null,
       },
       inputVal: {},
       companies: company,
@@ -62,8 +69,8 @@ export default {
     },
     setTabIndex(tabIndex) {
       this.tabIndex = tabIndex; // tabIndex 0 = '모두', 1 = '본인', 2 = '회사'
-      console.log(tabIndex)
-    }
+      console.log(tabIndex);
+    },
   },
 };
 </script>
