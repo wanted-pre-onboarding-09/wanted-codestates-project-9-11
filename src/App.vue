@@ -1,24 +1,34 @@
 <template>
   <main>
     <section class="wrap">
+      <SearchBar :company="company" :setCompany="setCompany" />
       <ResultWrap />
     </section>
   </main>
 </template>
 
 <script>
-import ResultWrap from "./components/ResultWrap.vue";
-import mock from "./mock/index";
+import ResultWrap from './components/ResultWrap.vue';
+import SearchBar from './components/SearchBar.vue';
+import mock from './mock/index';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     ResultWrap,
+    SearchBar,
   },
   data() {
     return {
       mock,
+      company: '',
     };
+  },
+  methods: {
+    setCompany(value) {
+      this.company = value;
+      console.log(value);
+    },
   },
 };
 </script>
