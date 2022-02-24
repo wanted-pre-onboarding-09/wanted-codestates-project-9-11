@@ -10,9 +10,9 @@
       <PentagonChart :chartValue="chartData" />
       <TabSection @tabIndex="setTabIndex" />
       <ResultWrap
-        :setTabIndex="tabIndex"
+        :selectTabIndex="tabIndex"
         :selectUser="user"
-        :selectCompany="score"
+        :selectCompany="inputVal"
       />
       <!-- <PentagonChart />
       <TabSection />
@@ -87,7 +87,6 @@ export default {
     },
     setTabIndex(tabIndex) {
       this.tabIndex = tabIndex; // tabIndex 0 = '모두', 1 = '본인', 2 = '회사'
-      console.log(tabIndex);
     },
   },
 };
