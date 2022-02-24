@@ -4,10 +4,10 @@
       :key="idx" 
       v-for="(tab, idx) in tabs"
       v-bind:class="{active: currentTab === idx}"
-      v-on:click="currentTab = idx"
+      v-on:click="changeIndex(idx)"
     >
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAABtklEQVRoge2ZzS5DQRiGH4REQpCgbdhLtFhwGSIR3IBLEfcgSFwBNtyAnx1LtbDxT2vlZyFRLYuppD5zmunpOT2T+J5kkn6Tmen7nnammbegKIqiKOFpcxyXAeaAcSAFtMemyFAGnoA8sAc8NrvgMLAJfAJfCbUSsAEMhTUxAVwnaEC2KyDXqIkMcOuBeNkegBGb4KA9sgvMi75XzPf1zuVJRMAoZl/2iv4dYNFlgSmgwu8ncYDZL60mBRwJLRVg0mXyKn8/zr5YZLrRDxSEphU5yHaMTot6C3iJWl0DPFc11DIjB9mMpEV9HpWiJsiLWmq0GukUdSkyOeH5EHWXHBD3L3TLUCO+oUZ8Q434hhrxDTXiG2rEN9SIb9iMyPuHvJ8kgbx/yPuJ1UhB1NnI5IRH5llSo9XIqaiXMQFAUgxUNdRy4jLRFgcdYqKZVpMGjnGIg4ICum1gQfS9AfvABfAeldIAuoExYBbosWhbcl0oDdyQfEQq2z0BkWk9cpjgOGnxP+2SJg6eIWAdcyQnZaAErAGD9YS6/tGTwgTK2errDsd5YSkDReAME5wXY34/RVEU5Z/zDUuOFj4+ZLNSAAAAAElFTkSuQmCC">
-      <span class="tab-title">{{tab}}</span>
+      <img :src="tab.img">
+      <span class="tab-title">{{tab.text}}</span>
     </button>
   </div>
 </template>
@@ -15,13 +15,28 @@
 <script>
   export default {
     name: 'TabSection',
+    methods: {
+      changeIndex(id) {
+        this.currentTab = id;
+        this.$emit("tabIndex", this.currentTab)
+      }
+    },
     data() {
       return {
         currentTab: 0,
         tabs: [
-          '모두',
-          '본인',
-          '회사'
+          {
+            text: '모두',
+            img: require("../assets/all.png")
+          },
+          {
+            text: '본인',
+            img: require("../assets/me.png")
+          },
+          {
+            text: '회사',
+            img: require("../assets/corp.png")
+          }
         ]
       }
     }
@@ -30,10 +45,9 @@
 
 <style>
 .tab_group {
-  margin: 10px 0 20px 0px;
+  margin: 10px 0 40px 0px;
   display: flex;
   flex-direction: row;
-  /* width: 360px; */
   border: 1px solid #f2f2f2;
   border-radius: 4px;
   background: #f2f2f2;
