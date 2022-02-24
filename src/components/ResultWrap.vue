@@ -10,7 +10,9 @@
       </li>
       <li>{{ listData[index][0] }}</li>
     </div>
-    <div class="chart">{{ [score, companyParsing[index]] }}</div>
+
+    <div class="chart"><HorizontalBar /></div>
+
     <div :class="{ active: !(score > 4) }" class="stick">
       <li>
         <span>{{ 10 - score }}</span> /10
@@ -21,17 +23,24 @@
 </template>
 
 <script>
+import HorizontalBar from "./HorizontalBar.vue";
+
 export default {
   name: "ResultWrap",
   methods: {},
+  components: {
+    HorizontalBar,
+  },
   props: {
     selectUser: Object,
     selectCompany: Object,
   },
+
   data() {
     const userParsing = Object.values(this.selectUser);
-    const companyParsing = Object.values(this.selectCompany);
-    console.log(userParsing, companyParsing);
+    const companyParsing = this.selectCompany.score
+      ? Object.values(this.selectCompany.score)
+      : [];
     return {
       userParsing,
       companyParsing,
@@ -44,8 +53,21 @@ export default {
       ],
     };
   },
-  // created: function () {
-  //   console.log(this.company.samsung.score);
+  watch: {
+    selectCompany() {
+      this.companyParsing = this.selectCompany.score
+        ? Object.values(this.selectCompany.score)
+        : [];
+    },
+  },
+
+  // test() {
+  //   th
+  // }
+  // watch: {
+  //   selectCompany(): function () {
+  //     console.log("변경");
+  //   },
   // },
 };
 </script>
