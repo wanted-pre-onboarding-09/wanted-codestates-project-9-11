@@ -9,7 +9,6 @@
 </template>
 
 <script>
-
 import SearchBar from './components/SearchBar.vue';
 
 import HeaderPage from './components/HeaderPage.vue';
@@ -22,6 +21,8 @@ export default {
   components: {
     ResultWrap,
     SearchBar,
+
+    HeaderPage,
   },
   data() {
     return {
@@ -35,7 +36,6 @@ export default {
       console.log(value);
     },
   },
-
 };
 </script>
 
