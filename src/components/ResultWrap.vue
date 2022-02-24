@@ -4,16 +4,16 @@
     <p>나의 결과는?</p>
   </div>
   <ul v-for="(score, index) in userParsing" :key="index">
-    <div :class="{ active: score[1] > 4 }" class="stick">
+    <div :class="{ active: score > 4 }" class="stick">
       <li>
-        <span>{{ score[1] }}</span> /10
+        <span>{{ score }}</span> /10
       </li>
       <li>{{ listData[index][0] }}</li>
     </div>
-    <div class="chart">차트</div>
-    <div :class="{ active: !(score[1] > 4) }" class="stick">
+    <div class="chart">{{ [score, companyParsing[index]] }}</div>
+    <div :class="{ active: !(score > 4) }" class="stick">
       <li>
-        <span>{{ 10 - score[1] }}</span> /10
+        <span>{{ 10 - score }}</span> /10
       </li>
       <li>{{ listData[index][1] }}</li>
     </div>
@@ -21,16 +21,20 @@
 </template>
 
 <script>
-import { user } from "../mock/index";
-
-const userParsing = Object.entries(user);
-
 export default {
   name: "ResultWrap",
   methods: {},
+  props: {
+    selectUser: Object,
+    selectCompany: Object,
+  },
   data() {
+    const userParsing = Object.values(this.selectUser);
+    const companyParsing = Object.values(this.selectCompany);
+    console.log(userParsing, companyParsing);
     return {
       userParsing,
+      companyParsing,
       listData: [
         ["적극성", "수동성"],
         ["자신감", "신중함"],
@@ -40,6 +44,9 @@ export default {
       ],
     };
   },
+  // created: function () {
+  //   console.log(this.company.samsung.score);
+  // },
 };
 </script>
 
