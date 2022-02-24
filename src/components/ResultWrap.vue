@@ -21,9 +21,8 @@
 </template>
 
 <script>
-import mock from "../mock/index";
+import { user } from "../mock/index";
 
-const { user } = mock;
 const userParsing = Object.entries(user);
 
 export default {
