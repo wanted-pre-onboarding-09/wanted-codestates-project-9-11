@@ -6,8 +6,8 @@ const user = {
   horizontal: 6,
 };
 
-const company = {
-  samsung: {
+const company = [
+  {
     name: "삼성",
     score: {
       aggressive: 10,
@@ -17,7 +17,7 @@ const company = {
       horizontal: 3,
     },
   },
-  kakao: {
+  {
     name: "카카오",
     score: {
       aggressive: 6,
@@ -27,7 +27,7 @@ const company = {
       horizontal: 9,
     },
   },
-  lg: {
+  {
     name: "LG",
     score: {
       aggressive: 7,
@@ -37,6 +37,6 @@ const company = {
       horizontal: 7,
     },
   },
-};
+];
 
 export { company, user };
