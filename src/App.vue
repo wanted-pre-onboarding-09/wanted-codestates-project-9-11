@@ -14,20 +14,33 @@
         :selectUser="user"
         :selectCompany="score"
       />
+      <!-- <PentagonChart />
+      <TabSection />
+      <ResultWrap :selectUser="user" :selectCompany="inputVal" /> -->
+      <!-- <div>{{ this.inputVal }}</div> -->
     </section>
   </main>
 </template>
 
 <script>
-import PentagonChart from './components/chart/PentagonChart.vue';
-import SearchBar from './components/SearchBar.vue';
-import TabSection from './components/TabSection.vue';
-import HeaderPage from './components/HeaderPage.vue';
-import ResultWrap from './components/ResultWrap.vue';
-import { user, company } from './mock/index';
+import PentagonChart from "./components/chart/PentagonChart.vue";
+import SearchBar from "./components/SearchBar.vue";
+import TabSection from "./components/TabSection.vue";
+import HeaderPage from "./components/HeaderPage.vue";
+import ResultWrap from "./components/ResultWrap.vue";
+import { user, company } from "./mock/index";
+
+// import PentagonChart from "./components/chart/PentagonChart.vue";
+// import SearchBar from "./components/SearchBar.vue";
+// import TabSection from "./components/TabSection.vue";
+// import HeaderPage from "./components/HeaderPage.vue";
+// import ResultWrap from "./components/ResultWrap.vue";
+// import { user } from "./mock/index";
+// import { company } from "./mock/index.js";
+// import { ref } from "vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     PentagonChart,
     ResultWrap,
@@ -35,11 +48,18 @@ export default {
     TabSection,
     HeaderPage,
   },
+
+  // setup() {
+  //   const inputVal = ref({});
+  //   console.log(inputVal, "");
+  //   return inputVal;
+  // },
+
   data() {
-    console.log(this.inputVal);
+    console.log();
     return {
       user,
-      company: '',
+      company: "",
       tabIndex: 0,
       score: {
         aggressive: 10,
@@ -58,13 +78,11 @@ export default {
   },
   methods: {
     setInputVal(value) {
-      if (value === '') {
-        this.inputVal = value;
-        console.log(this.inputVal);
+      if (value === "") {
+        this.inputVal = {};
       } else {
         let filtering = this.companies.filter((item) => item.name === value);
-        this.inputVal = filtering[0];
-        console.log(this.inputVal);
+        this.inputVal = { ...this.inputVal, ...filtering[0] };
       }
     },
     setTabIndex(tabIndex) {
