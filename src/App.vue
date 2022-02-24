@@ -2,27 +2,40 @@
   <main>
     <HeaderPage />
     <section class="wrap">
+      <SearchBar :company="company" :setCompany="setCompany" />
       <ResultWrap />
     </section>
   </main>
 </template>
 
 <script>
+
+import SearchBar from './components/SearchBar.vue';
+
 import HeaderPage from './components/HeaderPage.vue';
 import ResultWrap from './components/ResultWrap.vue';
+
 import mock from './mock/index';
 
 export default {
   name: 'App',
   components: {
-    HeaderPage,
-    ResultWrap
+    ResultWrap,
+    SearchBar,
   },
   data() {
     return {
-      mock
+      mock,
+      company: '',
     };
-  }
+  },
+  methods: {
+    setCompany(value) {
+      this.company = value;
+      console.log(value);
+    },
+  },
+
 };
 </script>
 
