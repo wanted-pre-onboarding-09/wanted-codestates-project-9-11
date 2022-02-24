@@ -3,23 +3,37 @@
     <p>MY RESULT</p>
     <p>나의 결과는?</p>
   </div>
-  <ul v-for="(score, index) in userParsing" :key="index">
-    <div :class="{ active: score > 4 }" class="stick">
-      <li>
-        <span>{{ score }}</span> /10
-      </li>
-      <li>{{ listData[index][0] }}</li>
-    </div>
 
-    <div class="chart"><HorizontalBar /></div>
+  <section>
+    <template v-for="i in list" :key="i">
+      <template v-if="i === 1">
+        <ul>
+          <template v-for="(score, index) in userParsing" :key="index">
+            <li :class="{ active: score > 4 }" class="stick">
+              <span class="tall">{{ score }}</span> /10
+              <span>{{ listData[index][0] }}</span>
+            </li>
+          </template>
+        </ul>
+      </template>
+      <template v-else-if="i === 2">
+        <ul class="chart">
+          <HorizontalBar />
+        </ul>
+      </template>
 
-    <div :class="{ active: !(score > 4) }" class="stick">
-      <li>
-        <span>{{ 10 - score }}</span> /10
-      </li>
-      <li>{{ listData[index][1] }}</li>
-    </div>
-  </ul>
+      <template v-else>
+        <ul>
+          <template v-for="(score, index) in userParsing" :key="index">
+            <li :class="{ active: !(score > 4) }" class="stick">
+              <span class="tall">{{ 10 - score }}</span> /10
+              <span>{{ listData[index][1] }}</span>
+            </li>
+          </template>
+        </ul>
+      </template>
+    </template>
+  </section>
 </template>
 
 <script>
@@ -34,16 +48,20 @@ export default {
   props: {
     selectUser: Object,
     selectCompany: Object,
+    selectTabIndex: Number,
   },
 
   data() {
+    console.log("hi");
     const userParsing = Object.values(this.selectUser);
     const companyParsing = this.selectCompany.score
       ? Object.values(this.selectCompany.score)
       : [];
+    const tabIndex = this.selectTabIndex;
     return {
       userParsing,
       companyParsing,
+      tabIndex,
       listData: [
         ["적극성", "수동성"],
         ["자신감", "신중함"],
@@ -51,6 +69,7 @@ export default {
         ["개인 성향", "조직 성향"],
         ["수평사고", "위계사고"],
       ],
+      list: [1, 2, 3],
     };
   },
   watch: {
@@ -59,34 +78,39 @@ export default {
         ? Object.values(this.selectCompany.score)
         : [];
     },
+    selectTabIndex() {
+      this.tabIndex = this.selectTabIndex;
+    },
   },
-
-  // test() {
-  //   th
-  // }
-  // watch: {
-  //   selectCompany(): function () {
-  //     console.log("변경");
-  //   },
-  // },
 };
 </script>
 
 <style scoped>
+section {
+  display: flex;
+  justify-content: space-between;
+}
 ul {
+  width: 28%;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+li {
+  margin-bottom: 15px;
+}
+.tall {
+  font-size: 14px;
+}
+/* ul {
   font-size: 12px;
   width: 100%;
   display: flex;
   margin-bottom: 15px;
-}
+} */
 .active {
   color: #00cc66;
   font-weight: bold;
   font-size: 12px;
-}
-.stick {
-  width: 28%;
-  justify-content: space-between;
 }
 
 .chart {
@@ -94,16 +118,16 @@ ul {
   text-align: center;
 }
 
+/* 
 .stick {
   display: flex;
-}
+} */
 
 p {
   text-align: center;
   margin-bottom: 10px;
   font-weight: bold;
 }
-
 .result p:first-child {
   font-size: 12px;
   font-weight: 800;
