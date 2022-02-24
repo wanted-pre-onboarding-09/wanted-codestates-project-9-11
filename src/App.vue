@@ -1,5 +1,6 @@
 <template>
   <main>
+    <HeaderPage />
     <section class="wrap">
       <SearchBar :company="company" :setCompany="setCompany" />
       <ResultWrap />
@@ -8,8 +9,12 @@
 </template>
 
 <script>
-import ResultWrap from './components/ResultWrap.vue';
+
 import SearchBar from './components/SearchBar.vue';
+
+import HeaderPage from './components/HeaderPage.vue';
+import ResultWrap from './components/ResultWrap.vue';
+
 import mock from './mock/index';
 
 export default {
@@ -30,6 +35,7 @@ export default {
       console.log(value);
     },
   },
+
 };
 </script>
 
@@ -46,6 +52,7 @@ main {
   min-height: 100vh;
   background-color: #e5e5e5;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
