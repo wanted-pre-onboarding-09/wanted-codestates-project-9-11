@@ -49,7 +49,7 @@ export default {
     submit(event) {
       if (
         this.companies.filter((item) => item.name === event.target.value)
-          .length === 0
+          .length == 0
       ) {
         this.modalOpen = true;
         this.deletBtnOpen = false;
