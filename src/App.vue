@@ -14,7 +14,6 @@
         :selectUser="user"
         :selectCompany="inputVal"
       />
-      <TestTab ref="child_component" />
     </section>
   </main>
 </template>
@@ -26,7 +25,6 @@ import TabSection from "./components/TabSection.vue";
 import HeaderPage from "./components/HeaderPage.vue";
 import ResultWrap from "./components/ResultWrap.vue";
 import { user, company } from "./mock/index";
-import TestTab from "./components/TestTab.vue";
 
 export default {
   name: "App",
@@ -36,7 +34,6 @@ export default {
     SearchBar,
     TabSection,
     HeaderPage,
-    TestTab,
   },
 
   data() {
@@ -70,7 +67,6 @@ export default {
     },
     setTabIndex(tabIndex) {
       this.tabIndex = tabIndex; // tabIndex 0 = '모두', 1 = '본인', 2 = '회사'
-      this.$refs.child_component.tabIdx = tabIndex;
     },
   },
 };
