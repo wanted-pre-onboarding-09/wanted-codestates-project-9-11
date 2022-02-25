@@ -51,7 +51,5 @@ npm run serve
 | Design   | CSS 스타일링     |
 | Fix      | 버그 수정        |
 | Refactor | 리팩토링         |
-| Deploy   | 배포             |
+| Deploy   | 배포            |
 | Remove   | 파일 삭제        |
-
-|
