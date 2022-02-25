@@ -10,12 +10,9 @@
 
 <script>
 export default {
-  data() {
-    //개인 진단 점수가져오고 비교기업 null로 세팅
-  },
   methods: {
     onReset: function () {
-      //데이터를 차트로 넘기기
+      history.go(0);
     }
   }
 };
