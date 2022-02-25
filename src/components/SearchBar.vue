@@ -7,7 +7,7 @@
         <i class="fas fa-solid fa-angle-right"></i>
       </div>
       <div class="resultContainer">
-        <div class="searchCompany">{{ inputVal.name }}</div>
+        <div class="searchCompany">{{ inputVal?.name }}</div>
 
         <span
           v-on:click="deleteBtn"
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import SearchModal from './SearchBarModal.vue';
+import SearchModal from "./SearchBarModal.vue";
 export default {
   components: {
     SearchModal,
@@ -52,16 +52,18 @@ export default {
           .length === 0
       ) {
         this.modalOpen = true;
+        this.deletBtnOpen = false;
+        this.setInputVal("");
       } else {
         this.setInputVal(event.target.value);
         this.deletBtnOpen = true;
       }
 
-      event.target.value = '';
+      event.target.value = "";
     },
 
     deleteBtn() {
-      this.setInputVal('');
+      this.setInputVal("");
       this.deletBtnOpen = false;
     },
     modalClose() {
@@ -109,8 +111,8 @@ export default {
   margin: 0 15px;
 }
 .deleteBtn:before {
-  font-family: 'FontAwesome';
-  content: '\f057';
+  font-family: "FontAwesome";
+  content: "\f057";
 }
 
 .inputContainer {
