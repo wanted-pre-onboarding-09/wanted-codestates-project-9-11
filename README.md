@@ -31,6 +31,29 @@
 ## 5.디렉토리 구조
 
 ```bash
+src
+│   ├── App.vue
+│   ├── assets
+│   │   ├── all.png
+│   │   ├── cat.png
+│   │   ├── corp.png
+│   │   ├── logo.png
+│   │   └── me.png
+│   ├── components
+│   │   ├── HeaderPage.vue
+│   │   ├── HorizontalBar.vue
+│   │   ├── ResultWrap.vue
+│   │   ├── SearchBar.vue
+│   │   ├── SearchBarModal.vue
+│   │   ├── TabSection.vue
+│   │   ├── TestTab.vue
+│   │   └── chart
+│   ├── data
+│   │   └── index.js
+│   ├── main.js
+│   └── mock
+│       └── index.js
+└── vue.config.js
 
 
 ```
