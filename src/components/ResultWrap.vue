@@ -18,7 +18,15 @@
       </template>
       <template v-else-if="i === 2">
         <ul class="chart">
-          <HorizontalBar :users="userParsing" :companies="[8, 10, 6, 4, 7]" />
+          <template v-if="tabIndex === 0">
+            <HorizontalBar :users="userParsing" :companies="companyParsing" />
+          </template>
+          <template v-if="tabIndex === 1">
+            <HorizontalBar :users="userParsing" :companies="[]" />
+          </template>
+          <template v-if="tabIndex === 2">
+            <HorizontalBar :users="[]" :companies="companyParsing" />
+          </template>
         </ul>
       </template>
 
@@ -52,8 +60,6 @@ export default {
   },
 
   data() {
-    console.log("hi");
-
     const userParsing = Object.values(this.selectUser);
     const companyParsing = this.selectCompany.score
       ? Object.values(this.selectCompany.score)
@@ -98,17 +104,12 @@ ul {
   margin-bottom: 15px;
 }
 li {
-  margin-bottom: 15px;
+  margin-bottom: 11px;
 }
 .tall {
   font-size: 14px;
 }
-/* ul {
-  font-size: 12px;
-  width: 100%;
-  display: flex;
-  margin-bottom: 15px;
-} */
+
 .active {
   color: #00cc66;
   font-weight: bold;
@@ -119,11 +120,6 @@ li {
   width: 44%;
   text-align: center;
 }
-
-/* 
-.stick {
-  display: flex;
-} */
 
 p {
   text-align: center;
