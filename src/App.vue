@@ -10,6 +10,7 @@
       <PentagonChart />
       <TabSection @tabIndex="setTabIndex"/>
       <ResultWrap :setTabIndex="tabIndex" :selectUser="user" :selectCompany="score" />
+      <TestTab ref="child_component"/>
     </section>
   </main>
 </template>
@@ -22,6 +23,7 @@ import HeaderPage from './components/HeaderPage.vue';
 import ResultWrap from './components/ResultWrap.vue';
 import { user } from './mock/index';
 import { company } from './mock/index.js';
+import TestTab from './components/TestTab.vue';
 
 export default {
   name: 'App',
@@ -31,12 +33,12 @@ export default {
     SearchBar,
     TabSection,
     HeaderPage,
+    TestTab,
   },
   data() {
     console.log(this.inputVal);
     return {
       user,
-      tabIndex: 0,
       company: "",
       score: {
         aggressive: 10,
@@ -62,7 +64,7 @@ export default {
     },
     setTabIndex(tabIndex) {
       this.tabIndex = tabIndex; // tabIndex 0 = '모두', 1 = '본인', 2 = '회사'
-      console.log(tabIndex)
+      this.$refs.child_component.tabIdx = tabIndex;
     }
   },
 };
