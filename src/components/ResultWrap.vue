@@ -18,7 +18,7 @@
       </template>
       <template v-else-if="i === 2">
         <ul class="chart">
-          <HorizontalBar />
+          <HorizontalBar :users="userParsing" :companies="[8, 10, 6, 4, 7]" />
         </ul>
       </template>
 
@@ -53,10 +53,12 @@ export default {
 
   data() {
     console.log("hi");
+
     const userParsing = Object.values(this.selectUser);
     const companyParsing = this.selectCompany.score
       ? Object.values(this.selectCompany.score)
       : [];
+
     const tabIndex = this.selectTabIndex;
     return {
       userParsing,
